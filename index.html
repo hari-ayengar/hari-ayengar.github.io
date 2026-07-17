@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hari Ayengar</title>
-<meta name="description" content="Hari Ayengar — communications leader. Journalist turned communications strategist with a working practice built on AI.">
+<meta name="description" content="Hari Ayengar — communications leader. Journalist turned communications strategist, building teams that work with AI.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230B0D0C'/%3E%3Cg fill='none' stroke='%23E8E6DF' stroke-width='3.2' stroke-linejoin='round' stroke-linecap='round'%3E%3Cpath d='M50 9 C67 9 79 23 79 42 C79 46 79 49 78 52 C84 51 85 61 79 62 C77 78 65 93 50 93 C35 93 23 78 21 62 C15 61 16 51 22 52 C21 49 21 46 21 42 C21 23 33 9 50 9 Z'/%3E%3C/g%3E%3Cg fill='none' stroke='%234ADE80' stroke-width='3.2' stroke-linejoin='round' stroke-linecap='round'%3E%3Ccircle cx='37' cy='50' r='9.5'/%3E%3Ccircle cx='63' cy='50' r='9.5'/%3E%3Cpath d='M46.5 49 H53.5'/%3E%3Cpath d='M27.5 48 C24 47 22.5 47 21 48'/%3E%3Cpath d='M72.5 48 C76 47 77.5 47 79 48'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500&family=Newsreader:ital,opsz@1,6..72&display=swap" rel="stylesheet">
@@ -31,9 +32,18 @@
     -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
   }
+  /* faint dot-grid depth */
+  body::after{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background-image:radial-gradient(var(--wire) 1px,transparent 1.4px);
+    background-size:34px 34px;
+    -webkit-mask-image:radial-gradient(ellipse 80% 65% at 50% 20%,#000 40%,transparent 100%);
+    mask-image:radial-gradient(ellipse 80% 65% at 50% 20%,#000 40%,transparent 100%);
+    opacity:.5;
+  }
   /* faint scanline atmosphere */
   body::before{
-    content:"";position:fixed;inset:0;pointer-events:none;z-index:2;
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:3;
     background:repeating-linear-gradient(to bottom,transparent 0 3px,rgba(0,0,0,.16) 3px 4px);
     opacity:.35;mix-blend-mode:multiply;
   }
@@ -41,18 +51,31 @@
 
   .mono{font-family:'Spline Sans Mono',monospace}
 
+  /* ---- personal logo lockup ---- */
+  .logo{display:inline-flex;flex-direction:column;align-items:center;gap:9px}
+  .logo-head{width:56px;height:auto;display:block}
+  .logo-head .face{stroke:var(--fg);stroke-width:2.4;fill:none;
+    stroke-linejoin:round;stroke-linecap:round}
+  .logo-head .specs{stroke:var(--signal);stroke-width:2.4;fill:none;
+    stroke-linejoin:round;stroke-linecap:round;
+    filter:drop-shadow(0 0 5px rgba(74,222,128,.5))}
+  .logo-word{width:66px;height:auto;display:block}
+  .logo-word path{stroke:var(--fg);stroke-width:3.2;fill:none;
+    stroke-linejoin:round;stroke-linecap:round}
+
   /* ---- header ---- */
-  header{padding:16vh 0 0;position:relative}
+  header{padding:10vh 0 0;position:relative}
+  .brandbug{margin-bottom:36px;position:relative;z-index:1}
   /* animated circuit signature behind the name */
   .circuit{
-    position:absolute;top:6vh;right:-30px;width:320px;height:320px;
+    position:absolute;top:7vh;right:-30px;width:340px;height:340px;
     pointer-events:none;z-index:0;
   }
   .circuit path{
     stroke:var(--wire-lit);stroke-width:1.2;fill:none;
   }
   .circuit .trace{stroke:var(--signal-dim);stroke-width:1.4}
-  .circuit .node{fill:var(--signal);filter:drop-shadow(0 0 5px var(--signal));opacity:0}
+  .circuit .node{fill:var(--signal);filter:drop-shadow(0 0 6px var(--signal));opacity:0}
   .status{
     font-family:'Spline Sans Mono',monospace;
     font-size:12px;letter-spacing:.14em;
@@ -67,11 +90,20 @@
   h1{
     font-family:'Space Grotesk',sans-serif;
     font-weight:700;
-    font-size:clamp(56px,13vw,132px);
+    font-size:clamp(46px,9vw,104px);
     line-height:.92;
     letter-spacing:-.045em;
     position:relative;z-index:1;
   }
+
+  /* ---- hero + portrait ---- */
+  .hero{display:flex;gap:34px;align-items:flex-end;position:relative;z-index:1}
+  .hero-main{flex:1;min-width:0}
+  .portrait{flex:0 0 auto;width:212px;position:relative;margin:0 0 6px}
+  .portrait img{display:block;width:100%;height:auto;border-radius:6px;border:1px solid var(--wire-lit)}
+  .portrait::before,.portrait::after{content:"";position:absolute;width:13px;height:13px}
+  .portrait::before{top:9px;right:9px;border-top:1px solid var(--signal-dim);border-right:1px solid var(--signal-dim)}
+  .portrait::after{bottom:9px;left:9px;border-bottom:1px solid var(--signal-dim);border-left:1px solid var(--signal-dim)}
   h1 .machine{color:var(--signal);}
 
   .standfirst{
@@ -80,8 +112,8 @@
     font-size:clamp(15px,2.4vw,20px);
     line-height:1.5;
     color:var(--dim);
-    max-width:46ch;
-    min-height:3em;
+    max-width:52ch;
+    min-height:4.5em;
   }
   .standfirst .cursor{
     display:inline-block;width:.6ch;background:var(--signal);
@@ -93,6 +125,9 @@
 
   /* ---- section frame ---- */
   section{padding:12vh 0 0}
+  .reveal{opacity:0;transform:translateY(14px);
+    transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
   .eyebrow{
     font-family:'Spline Sans Mono',monospace;
     font-size:12px;letter-spacing:.2em;text-transform:uppercase;
@@ -107,9 +142,11 @@
   .lead{font-size:22px;line-height:1.5;letter-spacing:-.01em}
 
   /* ---- facts ---- */
-  .facts{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--wire);
+  .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--wire);
     border:1px solid var(--wire)}
-  .fact{background:var(--panel);padding:28px 22px}
+  .fact{background:var(--panel);padding:28px 22px;position:relative}
+  .fact::after{content:"";position:absolute;top:11px;right:11px;width:9px;height:9px;
+    border-top:1px solid var(--signal-dim);border-right:1px solid var(--signal-dim)}
   .fact .n{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:44px;
     line-height:1;letter-spacing:-.03em;color:var(--fg)}
   .fact .n em{color:var(--signal);font-style:normal}
@@ -119,18 +156,25 @@
   /* ---- roles ---- */
   .role{
     border-top:1px solid var(--wire);
-    padding:26px 0;
+    padding:26px 0 26px 40px;position:relative;
     display:grid;grid-template-columns:90px 1fr;gap:24px;
     transition:border-color .25s;
   }
+  /* timeline spine */
+  .role::after{content:"";position:absolute;left:13px;top:0;bottom:0;width:1px;background:var(--wire-lit);z-index:0}
+  .role::before{content:"";position:absolute;left:9px;top:31px;width:9px;height:9px;border-radius:50%;
+    background:var(--signal);box-shadow:0 0 8px var(--signal);z-index:1;transition:transform .25s}
   .role:hover{border-top-color:var(--wire-lit)}
+  .role:hover::before{transform:scale(1.4)}
+  .role:hover .yr{color:var(--signal)}
   .role:last-child{border-bottom:1px solid var(--wire)}
   .role .yr{font-family:'Spline Sans Mono',monospace;font-size:12px;color:var(--dimmer);
-    padding-top:6px;letter-spacing:.02em}
+    padding-top:6px;letter-spacing:.02em;transition:color .25s}
   .role h3{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:22px;
     letter-spacing:-.01em;line-height:1.25}
   .role h3 .org{color:var(--dim);font-weight:400}
   .role p{font-size:16px;color:var(--dim);margin:8px 0 0;max-width:60ch;line-height:1.55}
+  .role p b{color:var(--fg);font-weight:500}
   .role .tag{
     display:inline-block;font-family:'Spline Sans Mono',monospace;font-size:10px;
     letter-spacing:.08em;text-transform:uppercase;color:var(--signal);
@@ -151,8 +195,13 @@
   footer{
     margin-top:14vh;padding:30px 0 50px;border-top:1px solid var(--wire);
     font-family:'Spline Sans Mono',monospace;font-size:11px;letter-spacing:.1em;
-    color:var(--dimmer);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+    color:var(--dimmer);display:flex;justify-content:space-between;align-items:center;
+    flex-wrap:wrap;gap:12px;
   }
+  footer .sig{display:flex;align-items:center;gap:12px}
+  footer .sig .wordmark{width:60px;height:auto}
+  footer .sig .wordmark path{stroke:var(--dimmer);stroke-width:3.2;fill:none;
+    stroke-linejoin:round;stroke-linecap:round}
 
   a.link{color:var(--signal);text-decoration:none;border-bottom:1px solid var(--signal-dim)}
   a.link:hover{border-color:var(--signal)}
@@ -162,11 +211,15 @@
     .facts{grid-template-columns:1fr}
     .role{grid-template-columns:1fr;gap:6px}
     .role .yr{padding-top:0}
-    header{padding:12vh 0 0}
+    header{padding:8vh 0 0}
+    footer{justify-content:flex-start}
+    .hero{flex-direction:column;align-items:flex-start;gap:26px}
+    .portrait{width:164px}
   }
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
     .dot,.cursor{animation:none}
+    .reveal{opacity:1;transform:none;transition:none}
   }
 </style>
 </head>
@@ -174,7 +227,7 @@
 <div class="wrap">
 
   <header>
-    <svg class="circuit" viewBox="0 0 320 320" aria-hidden="true">
+    <svg class="circuit" viewBox="0 0 340 340" aria-hidden="true">
       <path class="trace" d="M20,60 H120 V140 H210" />
       <path class="trace" d="M20,60 V180 H90 V260 H240" />
       <path d="M120,140 V220 H180" />
@@ -189,34 +242,59 @@
       <circle class="node" cx="300" cy="210" r="3.5" />
       <circle class="node" cx="90" cy="180" r="3" />
     </svg>
-    <div class="status"><span class="dot"></span> COMMUNICATIONS &amp; MEDIA &mdash; AVAILABLE</div>
-    <h1>Hari<br>Ayengar</h1>
-    <div class="standfirst" id="typed"><span class="cursor">|</span></div>
+
+    <div class="logo brandbug" aria-label="Hari Ayengar">
+      <svg class="logo-head" viewBox="0 0 100 93" aria-hidden="true">
+        <path class="face" d="M50 6 C67 6 79 20 79 39 C79 43 79 46 78 49 C84 48 85 58 79 59 C77 75 65 90 50 90 C35 90 23 75 21 59 C15 58 16 48 22 49 C21 46 21 43 21 39 C21 20 33 6 50 6 Z"/>
+        <g class="specs">
+          <circle cx="37" cy="47" r="9.5"/><circle cx="63" cy="47" r="9.5"/>
+          <path d="M46.5 46 H53.5"/><path d="M27.5 45 C24 44 22.5 44 21 45"/><path d="M72.5 45 C76 44 77.5 44 79 45"/>
+        </g>
+      </svg>
+      <svg class="logo-word" viewBox="0 1 110 37" aria-hidden="true">
+        <path d="M8 6 V34 M22 6 V34 M8 20 H22"/>
+        <path d="M35 34 L44 6 L53 34 M38.6 24 H49.4"/>
+        <path d="M64 34 V6 H74 C79 6 79 21 74 21 H64 M70.5 21 L80 34"/>
+        <path d="M96 6 V34 M90 6 H102 M90 34 H102"/>
+      </svg>
+    </div>
+
+    <div class="hero">
+      <div class="hero-main">
+        <div class="status"><span class="dot"></span> COMMUNICATIONS &amp; MEDIA &mdash; LONDON</div>
+        <h1>Hari<br>Ayengar</h1>
+        <div class="standfirst" id="typed"><span class="cursor">|</span></div>
+      </div>
+      <figure class="portrait">
+        <img src="assets/Portrait_Hari.jpg" alt="Portrait of Hari Ayengar" width="212" height="212">
+      </figure>
+    </div>
   </header>
 
-  <section>
+  <section class="reveal">
     <div class="eyebrow">About <span class="idx">01</span></div>
-    <p class="lead">I lead communications for a living. Reputation, media, and the calls that land on a chief executive's desk at the wrong hour.</p>
-    <p class="dim">I started as a journalist in Mumbai, politics and sport, before crossing over to the other side of the notebook. Two decades on, I've built and run communications teams across payments, fintech, market research, and the legal sector, working out of Mumbai, Paris, and London. I've taken a fintech through its growth years, rebranded a company mid-flight, and spent half a decade inside legal education alongside the Law Society and the profession's largest firms.</p>
-    <p class="dim">The through-line now is AI, and how it makes good teams better. I hire and lead communicators, then give them the tools to research faster, produce more, and reach further than a team that size used to manage. I stay hands-on with the tools myself, so I'm leading from inside the work rather than pointing at it. Journalist's instincts, a strong team, and a real edge behind both.</p>
+    <p class="lead">I lead communications for a living. Reputation, media, and the high-stakes calls that shape how a business is seen.</p>
+    <p class="dim">I started as a journalist and then worked in advertising, before crossing over to the other side of the notebook as a public relations specialist. Two decades on, I've built and run communications teams across payments, fintech, market research, and the legal sector. I've taken a fintech unicorn through its growth years, rebranded a company during an M&amp;A, driven comms at stock market listed companies, and spent over half a decade in and around the legal profession, working with regulators, sector bodies and law firms of all sizes.</p>
+    <p class="dim">The through-line now is AI. I hire and lead communicators, then supercharge how the function works with it, so a small team researches deeper and produces more than its headcount should allow. Journalist's instincts, a strong team, and a real operating edge behind both.</p>
   </section>
 
-  <section>
+  <section class="reveal">
     <div class="eyebrow">Signal <span class="idx">02</span></div>
     <div class="facts">
       <div class="fact"><div class="n">20</div><div class="d">Years in comms &amp; media</div></div>
       <div class="fact"><div class="n">120<em>+</em></div><div class="d">Markets led comms across</div></div>
+      <div class="fact"><div class="n">1<em>M+</em></div><div class="d">Social audience managed</div></div>
     </div>
   </section>
 
-  <section>
+  <section class="reveal work">
     <div class="eyebrow">Work <span class="idx">03</span></div>
 
     <div class="role">
       <div class="yr">2026 &mdash;</div>
       <div>
-        <h3>VP, Communications <span class="org">/ AI legal software</span></h3>
-        <p>Building the global communications and PR function from scratch, hiring the team and equipping it with AI from day one. Advising the group chief executive and board on media, reputation, and executive communications.</p>
+        <h3>Vice President, PR &amp; Communications <span class="org">/ LEAP Legal Software</span></h3>
+        <p>Building the global corporate communications and PR function from scratch, with best-practice frameworks, reputation protocols, and AI-driven agentic workflows across every market. Advising the Group CEO and c-suite on executive communications, media, thought leadership, and corporate affairs, including M&amp;A, announcements, and crisis preparedness. Leading agencies and in-house team, events, digital, and a ground-up focus on AEO and GEO.</p>
         <span class="tag">Team building</span><span class="tag">AI-led comms</span><span class="tag">Legal tech</span>
       </div>
     </div>
@@ -224,17 +302,26 @@
     <div class="role">
       <div class="yr">2022 &mdash; 2026</div>
       <div>
-        <h3>Global Director of Communications <span class="org">/ market research</span></h3>
-        <p>Led global communications and events across 16 offices and more than 120 markets, working with global brands in payments, technology, and financial services. Introduced AI into the content and media operation as it scaled.</p>
+        <h3>Global Director of Communications and Events <span class="org">/ Euromonitor International</span></h3>
+        <p>Led global communications and events across 16 offices and more than 120 markets, growing top-tier coverage <b>40% year on year</b> and partnering with Mastercard, Visa, Google, and HSBC on brand and thought-leadership campaigns. Directed in-house and agency teams handling <b>10,000+ media mentions a month</b>, advised the c-suite on reputation and positioning, and brought AI into the content and media operation as it scaled.</p>
         <span class="tag">Global comms</span><span class="tag">AI content</span><span class="tag">Thought leadership</span>
+      </div>
+    </div>
+
+    <div class="role">
+      <div class="yr">2022</div>
+      <div>
+        <h3>Head of Public Relations <span class="org">/ Zama</span></h3>
+        <p>Built and launched the first public relations and corporate communications function for an AI and fully homomorphic encryption scale-up after its pre-seed round, hiring the team, appointing agencies, and setting the brand, messaging, and crisis playbooks for a deep-tech company facing regulatory and reputational risk.</p>
+        <span class="tag">Deep tech</span><span class="tag">AI</span><span class="tag">Comms build</span>
       </div>
     </div>
 
     <div class="role">
       <div class="yr">2021 &mdash; 2022</div>
       <div>
-        <h3>Global Director of PR <span class="org">/ fintech</span></h3>
-        <p>Ran global public relations through a cross-border payments company's growth years, including a corporate rebrand and a pre-IPO cycle, across B2B and B2C in three regions. Early use of AI tooling in a high-tempo global press office.</p>
+        <h3>Global Director of PR and Communications <span class="org">/ WorldRemit / Zepz</span></h3>
+        <p>Led global public relations from Series D through a <b>$292m Series E</b> and a pre-IPO Nasdaq cycle, growing coverage 25% year on year and share of voice by five points. Delivered a full corporate rebrand to new parent Zepz and the communications for the <b>$500m Sendwave acquisition</b>, across B2B and B2C in remittances, digital banking, crypto, and BNPL, with a 1m-plus social following.</p>
         <span class="tag">Fintech PR</span><span class="tag">Rebrand</span><span class="tag">Pre-IPO</span>
       </div>
     </div>
@@ -242,27 +329,61 @@
     <div class="role">
       <div class="yr">2016 &mdash; 2021</div>
       <div>
-        <h3>Associate Director of Communications <span class="org">/ legal education</span></h3>
-        <p>Led communications, PR, and brand for the UK's largest law school, working with the Law Society, the SRA, and leading firms through the profession's training reforms.</p>
+        <h3>Associate Director of Communications <span class="org">/ The University of Law</span></h3>
+        <p>Led corporate communications, PR, and brand for the UK's largest law school, part of a PE-backed group, delivering <b>10x coverage growth over five years</b> and +20 points of domain authority. Advised the board on growth strategy, M&amp;A, and reputation, and ran the sector-facing programme with the Law Society, the SRA, and Magic and Silver Circle firms.</p>
+        <span class="tag">Corporate comms</span><span class="tag">Board advisory</span><span class="tag">Legal sector</span>
       </div>
     </div>
 
     <div class="role">
-      <div class="yr">2006 &mdash; 2016</div>
+      <div class="yr">2013 &mdash; 2016</div>
       <div>
-        <h3>Earlier <span class="org">/ payments, education, journalism</span></h3>
-        <p>Communications roles across a listed payments group in Paris and education in London, following a start in journalism and sub-editing in Mumbai.</p>
+        <h3>Communications Manager <span class="org">/ London School of Business &amp; Finance</span></h3>
+        <p>Led an award-winning PR team and a 500,000-strong social following for a global professional-education group, supporting new international school launches.</p>
+      </div>
+    </div>
+
+    <div class="role">
+      <div class="yr">2012 &mdash; 2013</div>
+      <div>
+        <h3>Press Manager <span class="org">/ The AHS</span></h3>
+        <p>Led press and media relations for a UK and Ireland student membership body, building its visibility across the national press.</p>
+      </div>
+    </div>
+
+    <div class="role">
+      <div class="yr">2010 &mdash; 2011</div>
+      <div>
+        <h3>EMEA Communications Officer <span class="org">/ Ingenico Group (ENX:ING)</span></h3>
+        <p>Managed public relations and corporate communications for a NYSE Euronext-listed global payments group, issuing regulatory news and supporting eight multi-million-euro product-line launches.</p>
+      </div>
+    </div>
+
+    <div class="role">
+      <div class="yr">2006 &mdash; 2009</div>
+      <div>
+        <h3>Journalist, Sub-Editor &amp; News Writer <span class="org">/ E-Sense Yuva / ClearTrip.com / Oxygen Healthcare Communications</span></h3>
+        <p>Correspondent and sub-editor on the tabloid Yuva, with editorial work for the travel aggregator ClearTrip and copywriting for a healthcare communications agency.</p>
       </div>
     </div>
   </section>
 
-  <section class="contact">
+  <section class="contact reveal">
     <div class="eyebrow">Connect <span class="idx">04</span></div>
     <a class="big" href="https://www.linkedin.com/in/hari-s-ayengar/" rel="me">LinkedIn <span class="arw">&#8599;</span></a>
   </section>
 
   <footer>
-    <span>&copy; 2026 HARI AYENGAR</span>
+    <span class="sig">
+      <svg class="wordmark" viewBox="0 1 110 37" aria-label="HARI">
+        <path d="M8 6 V34 M22 6 V34 M8 20 H22"/>
+        <path d="M35 34 L44 6 L53 34 M38.6 24 H49.4"/>
+        <path d="M64 34 V6 H74 C79 6 79 21 74 21 H64 M70.5 21 L80 34"/>
+        <path d="M96 6 V34 M90 6 H102 M90 34 H102"/>
+      </svg>
+      <span>&copy; 2026 HARI AYENGAR</span>
+    </span>
+    <span>MEMBER, CIPR</span>
     <span>BUILT WITH INTENT</span>
   </footer>
 
@@ -277,6 +398,7 @@
   var nodes = document.querySelectorAll('.circuit .node');
   if(reduce){
     paths.forEach(function(p){p.style.strokeDashoffset=0;});
+    nodes.forEach(function(n){n.style.opacity=1;});
   } else {
     paths.forEach(function(p,idx){
       var len = p.getTotalLength();
@@ -292,11 +414,24 @@
     });
   }
 
+  // reveal sections on scroll
+  var reveals = document.querySelectorAll('.reveal');
+  if(reduce || !('IntersectionObserver' in window)){
+    reveals.forEach(function(r){r.classList.add('in');});
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {threshold:.12, rootMargin:'0px 0px -8% 0px'});
+    reveals.forEach(function(r){io.observe(r);});
+  }
+
   // typed standfirst
   var el = document.getElementById('typed');
-  var full = "I spent twenty years learning to tell stories. Now I build the teams that tell them, and give them AI to do it faster and reach further.";
+  var full = "I spent twenty years learning to tell stories. Now I build the teams that tell them and supercharge how they work with AI, so the function outperforms its size.";
   if(reduce){
-    el.innerHTML = full.replace('AI','<b>AI</b>') + '<span class="cursor">|</span>';
+    el.innerHTML = full.replace(/AI/,'<b>AI</b>') + '<span class="cursor">|</span>';
     return;
   }
   var i = 0;
